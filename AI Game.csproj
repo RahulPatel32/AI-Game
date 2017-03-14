@@ -76,8 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AIwaypoint.cs" />
+    <Compile Include="Assets\Scripts\FieldOfView.cs" />
+    <Compile Include="Assets\Scripts\FieldOfViewEditor.cs" />
     <Compile Include="Assets\Scripts\GuardController.cs" />
-    <Compile Include="Assets\Scripts\Not Used\AIpatrol.cs" />
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
