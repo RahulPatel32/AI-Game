@@ -10,6 +10,14 @@ public class GuardController : MonoBehaviour {
     public bool pause;
     public float speed;
 
+    public bool spotted = false;
+
+    public Transform sightStart, sightEnd;
+
+   
+    private Quaternion lookRotation;
+    private Vector3 direction;
+
 	void Start() {
 		reachDist = 0;
 		currentWaypoint = 0;
@@ -19,6 +27,7 @@ public class GuardController : MonoBehaviour {
     {
 
         Patrol();
+       // Raycasting();
     }
 
     void Patrol()
@@ -27,8 +36,10 @@ public class GuardController : MonoBehaviour {
 
         if(!pause)
         {
-            transform.Rotate(0, 0, speed * Time.deltaTime);
+            transform.Rotate(0, 0, 1);
+
             transform.position = Vector3.MoveTowards(transform.position, path[currentWaypoint].transform.position, speed * Time.deltaTime);
+
             if(distance == reachDist)
             {
                 StartCoroutine(GuardPause());
@@ -41,7 +52,13 @@ public class GuardController : MonoBehaviour {
         }
     }
 
-    void DetectPlayer()
+    void Raycasting()
+    {
+        Debug.DrawLine(sightStart.position, sightEnd.position, Color.green);
+        spotted = Physics2D.Linecast(sightStart.position, sightEnd.position, 1 <<LayerMask.NameToLayer("Player"));
+    }
+
+    void Behaviours()
     {
 
     }
